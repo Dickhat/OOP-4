@@ -14,7 +14,7 @@ public:
 	virtual void set_invisible() = 0;			//Исчезновение объекта
 };
 
-//Абстрактный класс точка с одной чистой ВФ
+//Абстрактный класс "точка" с одной чистой ВФ
 class Point :public Interface
 {
 protected:

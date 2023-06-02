@@ -513,5 +513,4 @@ int check(int i, int j, vector <Tower*>& Tow, vector <ball*>& BALL)
 		return 0;
 	else
 		return (j + 1);	//Вернуть номер объекта столкновения
-
 };
