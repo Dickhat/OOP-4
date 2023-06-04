@@ -18,15 +18,18 @@
     <ClCompile Include="OOP 4.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="classes.cpp">
+    <ClCompile Include="classes 4.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes.h">
+    <ClInclude Include="Classes 4.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="support.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

@@ -127,11 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="classes.cpp" />
+    <ClCompile Include="classes 4.cpp" />
     <ClCompile Include="OOP 4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes.h" />
+    <ClInclude Include="Classes 4.h" />
+    <ClInclude Include="includes.h" />
     <ClInclude Include="support.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

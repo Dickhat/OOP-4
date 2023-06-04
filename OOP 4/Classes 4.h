@@ -1,9 +1,5 @@
 #pragma once
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <vector>
-#include "support.h"
+#include "includes.h"
 
 using namespace std;
 
@@ -44,19 +40,19 @@ public:
 	};
 
 	//Возвращает X
-	int Get_X(){return X;};
+	int Get_X() { return X; };
 
 	//Возвращает Y
-	int Get_Y()	{return Y;}
+	int Get_Y() { return Y; }
 
 	//Устанавливает X
-	void Set_X(int ind_X){X = ind_X;};
+	void Set_X(int ind_X) { X = ind_X; };
 
 	//Устанавливает Y
-	void Set_Y(int ind_Y){Y = ind_Y;};
+	void Set_Y(int ind_Y) { Y = ind_Y; };
 
 	//Возвращает хитбоксы
-	const heat_box& get(){return boxheat;}
+	const heat_box& get() { return boxheat; }
 
 	//Возвращает цвет ручки
 	HPEN pen_color() { return pen; }
