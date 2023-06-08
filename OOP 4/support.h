@@ -118,6 +118,9 @@ static void Drag(int i, Point*& current, std::vector <Tower*>& Tow, std::vector 
 			else if (current == collisions[0][1])
 				break;
 		}
+		BALL[0]->set_visible(BALL[0]->pen_color());			//Повторная отрисовка шара
+		BALL[1]->set_visible(BALL[1]->pen_color());			//Повторная отрисовка шара
+
 		Sleep(1);
 	}
 }

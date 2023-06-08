@@ -9,6 +9,9 @@ class Interface
 public:
 	virtual void set_visible(HPEN color) = 0;	//Отображение объекта
 	virtual void set_invisible() = 0;			//Исчезновение объекта
+	virtual void print_build() = 0;				//Отображение основной части объекта
+	virtual void print_roof_build() = 0;		//Отображение "крыши" объекта
+	virtual void print_sub_build() = 0;			//Отображение пристройки объекта
 };
 
 //Абстрактный класс "точка" с одной чистой ВФ
@@ -68,49 +71,70 @@ public:
 
 	//Перемещает точку
 	void Move_To(int X, int Y);
-
-	//Перетаскивание точки
-	void Drag();
 };
 
 //Класс ядро
 class ball :public Point
 {
 protected:
-	int radius;
+	int radius;								//Радиус ядра
 public:
 	//Конструктор
 	ball(int X, int Y, HPEN color, int Rad) :Point(X, Y, color) { radius = Rad; };
 
-	void Paint_ball();
+	void print_build();						//Рисование ядра
 
-	void set_rad(int Rad) { radius = Rad; };
-	int get_rad() { return radius; };
+	void set_rad(int Rad) { radius = Rad; };//Установить радиус ядра
+	int get_rad() { return radius; };		//Получить радиус ядра
 
 	//Запоминает местоположение фигуры
 	void current_region(int X, int Y);
 
-	void set_visible(HPEN color);
+	void set_visible(HPEN color);			//Отображаение объекта
 
-	void set_invisible();
+	void set_invisible();					//Исчезновение объекта
+};
+
+//Улучшенное ядро
+class upgraded_ball : public ball
+{
+public:
+	//Конструктор
+	upgraded_ball(int X, int Y, HPEN color, int Rad) : ball(X, Y, color, Rad) {};
+
+	void print_sub_build();				//Отображение подобъекта
+
+	void print_roof_build();			//Отображение верхушки объекта
+
+	void current_region(int X, int Y);	//Отобразить хитбоксы
+
+	void set_visible(HPEN color);		//Отображаение объекта
+
+	void set_invisible();				//Исчезновение объекта
 };
 
 //Класс фигура (Башня)
 class Tower :public Point
 {
 public:
-	Tower(int X, int Y, HPEN color) :Point(X, Y, color) {
-
-	};
-	void virtual Paint();
+	Tower(int X, int Y, HPEN color) :Point(X, Y, color) {};
 
 	void current_region(int X, int Y);
 
-	//Делает видимой точку
+	//Делает видимым объект
 	void set_visible(HPEN color);
 
-	//Делает невидимой точку
+	//Делает невидимым объект
 	void set_invisible();
+
+	//Отображение основы башни
+	void print_build();
+
+	//Отображение "крыши" объекта
+	void print_roof_build();
+
+	//Отображение пристройки
+	void print_sub_build();
 };
 
 //Вертикальная иерархия 1
@@ -120,6 +144,16 @@ public:
 	//Конструктор
 	vertical_Tower_1(int X, int Y, HPEN color) :Tower(X, Y, color) {};
 
+	//Основание башни с лестницей
+	void print_build();
+
+	//Пристройка
+	void print_sub_build();
+
+	//Башня
+	void print_roof_build();
+
+	//Текущее местоположение
 	void current_region(int X, int Y);
 
 	//Делает видимой башню
@@ -136,7 +170,8 @@ public:
 	//Конструктор
 	vertical_Tower_2(int X, int Y, HPEN color) :vertical_Tower_1(X, Y, color) {};
 
-	void print_construction();
+	//Пристройка
+	void print_sub_build();
 
 	void current_region(int X, int Y);
 
@@ -147,15 +182,15 @@ public:
 	void set_invisible();
 };
 
-//Веерная иерархия 1
+//Веерная иерархия 1 (Левая пристройка)
 class left_construction_Tower : public Tower
 {
 public:
 	//Конструктор
 	left_construction_Tower(int X, int Y, HPEN color) :Tower(X, Y, color) {};
 
-	//Левая конструкция
-	void left_print();
+	//Левая пристройка
+	void print_sub_build();
 
 	void current_region(int X, int Y);
 
@@ -174,7 +209,7 @@ public:
 	right_construction_Tower(int X, int Y, HPEN color) :Tower(X, Y, color) {};
 
 	//Правая конструкция
-	void right_print();
+	void print_sub_build();
 
 	void current_region(int X, int Y);
 

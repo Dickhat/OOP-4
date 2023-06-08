@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Interface" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAABAIACQAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAIAAAgAAAAAgAQAAJAABEAAAGCAAAAAAAYAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ball" Collapsed="true">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAACAAAAAAAAAAAAAABAAAAAAICiAAIAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tower" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAABAAAAAAICCQAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="vertical_Tower_1" Collapsed="true">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="vertical_Tower_2" Collapsed="true">
+    <Position X="9.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAgAAAAAAABAAAAAAACCAAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="left_construction_Tower" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="right_construction_Tower" Collapsed="true">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="upgraded_ball" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAABAACCQAAAAAAAEA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

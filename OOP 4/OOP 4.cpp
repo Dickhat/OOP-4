@@ -24,8 +24,8 @@ int main()
 	left_construction_Tower cons_tw_1(200, 400, PenBlue);
 	right_construction_Tower cons_tw_2(400, 400, PenGray);
 
-	ball bill_1(200, 200, PenRed, 10);
-	ball bill_2(800, 400, PenRed, 40);
+	upgraded_ball bill_1(200, 200, PenRed, 10);
+	upgraded_ball bill_2(800, 400, PenRed, 40);
 	bill_1.set_visible(PenRed);
 	bill_2.set_visible(PenRed);
 
@@ -43,14 +43,14 @@ int main()
 	//Матрица перехода
 	Tower* collisions[4][2] =
 	{
-		{new vertical_Tower_1(green_tw_1.Get_X(),green_tw_1.Get_Y(), PenRed),		//Красная башня
+		{new vertical_Tower_1(green_tw_1.Get_X(),green_tw_1.Get_Y(), PenRed),		//КБ с прямоугольной крышей и лестницей
 		new vertical_Tower_1(1000, 1000,PenWhite)},									//Уничтоженная башня
-		{new vertical_Tower_2(green_tw_2.Get_X(),green_tw_2.Get_Y(), PenRed),		//Красная башня с правой пристройкой 
-		new vertical_Tower_1(green_tw_2.Get_X(),green_tw_2.Get_Y(), PenRed)},		//Красная башня без пристройки
-		{new left_construction_Tower(cons_tw_1.Get_X(),cons_tw_1.Get_Y(), PenRed),	//Красная башня с левой пристройкой
-		new vertical_Tower_1(cons_tw_1.Get_X(),cons_tw_1.Get_Y(), PenRed)},			//Красная башня без пристройки
-		{new right_construction_Tower(cons_tw_2.Get_X(),cons_tw_2.Get_Y(), PenRed),	//Красная башня с правой пристройкой
-		new vertical_Tower_1(cons_tw_2.Get_X(),cons_tw_2.Get_Y(), PenRed)}			//Красная башня без пристройки
+		{new vertical_Tower_2(green_tw_2.Get_X(),green_tw_2.Get_Y(), PenRed),		//КБ с правой и левой пристройкой,прямоугольной крышей, лестницей 
+		new vertical_Tower_1(green_tw_2.Get_X(),green_tw_2.Get_Y(), PenRed)},		//КБ без пристройки с прямоугольной крышей и лестницей
+		{new left_construction_Tower(cons_tw_1.Get_X(),cons_tw_1.Get_Y(), PenRed),	//КБ с левой пристройкой и треугольной крышей
+		new Tower(cons_tw_1.Get_X(),cons_tw_1.Get_Y(), PenRed)},					//КБ без пристройки с треугольной крышей
+		{new right_construction_Tower(cons_tw_2.Get_X(),cons_tw_2.Get_Y(), PenRed),	//КБ с правой пристройкой и треугольной крышей
+		new Tower(cons_tw_2.Get_X(),cons_tw_2.Get_Y(), PenRed)}						//КБ без пристройки и треугольной крышей
 	};
 
 	Point* Pcur;				//Указатель на текущий элемент
