@@ -27,7 +27,7 @@ static void PressKey(int VkCode)
 }
 
 //Проверка столкновений
-static void check(int i, Point*& current, std::vector <ball*>& BALL, Tower* collisions[4][2])
+static void check(int& i, Point*& current, std::vector <ball*>& BALL, Tower* collisions[5][5])
 {
 
 	for (int j = 0; j < BALL.size(); ++j)
@@ -42,84 +42,62 @@ static void check(int i, Point*& current, std::vector <ball*>& BALL, Tower* coll
 		}
 		else
 		{
-			//Point temp = collisions[i][j];
-			current->set_invisible();					//Убрать старый объект
-
-			//if Если объект измененный
-			if (i == -1)
-				break;
+			current->set_invisible();
 
 			//Появление новой фигуры на месте старой
 			collisions[i][j]->Move_To(current->Get_X(), current->Get_Y());
 
-			current = collisions[i][j];				//Взять объект из матрицы перехода
-			current->set_visible(current->pen_color());	//Отобразить новый объект
+			current = collisions[i][j];				//Взять объект из матрицы 
+			i = j;
 
-			BALL[0]->set_visible(BALL[0]->pen_color());	//Повторная отрисовка шара
-			BALL[1]->set_visible(BALL[1]->pen_color());	//Повторная отрисовка шара
+			current->set_visible(current->pen_color());
 		}
 	}
-
-	BALL[0]->set_visible(BALL[0]->pen_color());			//Повторная отрисовка шара
-	BALL[1]->set_visible(BALL[1]->pen_color());			//Повторная отрисовка шара
 };
 
+
 //Буксировка фигуры current
-static void Drag(int i, Point*& current, std::vector <Tower*>& Tow, std::vector <ball*>& BALL, Tower* collisions[4][2])
+static void Drag(int& i, Point*& current, std::vector <Tower*>& Tow, std::vector <ball*>& BALL, Tower* collisions[5][5])
 {
+	current = Tow[i];
+
 	//while 7 - выход
 	while (!KEY_DOWN(55))
 	{
+		//current->set_invisible();
+
 		// A - влево
 		if (KEY_DOWN(65))
 		{
 			current->Move_To(current->Get_X() - 20, current->Get_Y());
 
-			//if Проверка, что объект не изменен
-			if (current == Tow[0] || current == Tow[1] || current == Tow[2] || current == Tow[3])
-				check(i, current, BALL, collisions);
-			//else if не двигать пустой объект
-			else if (current == collisions[0][1])
-				break;
+			check(i, current, BALL, collisions);
 		}
 		// W - вверх
 		else if (KEY_DOWN(87))
 		{
 			current->Move_To(current->Get_X(), current->Get_Y() - 20);
 
-			//if Проверка, что объект не изменен
-			if (current == Tow[0] || current == Tow[1] || current == Tow[2] || current == Tow[3])
-				check(i, current, BALL, collisions);
-			//else if не двигать пустой объект
-			else if (current == collisions[0][1])
-				break;
+			check(i, current, BALL, collisions);
 		}
 		// D - вправо
 		else if (KEY_DOWN(68))
 		{
 			current->Move_To(current->Get_X() + 20, current->Get_Y());
+			check(i, current, BALL, collisions);
 
-			//if Проверка, что объект не изменен
-			if (current == Tow[0] || current == Tow[1] || current == Tow[2] || current == Tow[3])
-				check(i, current, BALL, collisions);
-			//else if не двигать пустой объект
-			else if (current == collisions[0][1])
-				break;
 		}
 		// S - Вниз
 		else if (KEY_DOWN(83))
 		{
 			current->Move_To(current->Get_X(), current->Get_Y() + 20);
-
-			//if Проверка, что объект не изменен
-			if (current == Tow[0] || current == Tow[1] || current == Tow[2] || current == Tow[3])
-				check(i, current, BALL, collisions);
-			//else if не двигать пустой объект
-			else if (current == collisions[0][1])
-				break;
+			check(i, current, BALL, collisions);
 		}
-		BALL[0]->set_visible(BALL[0]->pen_color());			//Повторная отрисовка шара
-		BALL[1]->set_visible(BALL[1]->pen_color());			//Повторная отрисовка шара
+
+		for (int i = 0; i < BALL.size(); i++)
+		{
+			BALL[i]->set_visible(BALL[i]->pen_color());
+		}
 
 		Sleep(1);
 	}
