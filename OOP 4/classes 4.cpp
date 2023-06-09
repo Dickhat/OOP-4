@@ -59,7 +59,7 @@ void ball::set_visible(HPEN color)
 void ball::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();
@@ -104,7 +104,7 @@ void upgraded_ball::set_visible(HPEN color)
 void upgraded_ball::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();		//Отобразить основной объект
@@ -166,7 +166,7 @@ void Tower::set_visible(HPEN color)
 void Tower::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();
@@ -251,7 +251,7 @@ void vertical_Tower_1::set_visible(HPEN color)
 void vertical_Tower_1::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();		 //Отображение башни
@@ -340,7 +340,7 @@ void vertical_Tower_2::set_visible(HPEN color)
 void vertical_Tower_2::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();		 //Отображение башни
@@ -402,7 +402,44 @@ void left_construction_Tower::set_visible(HPEN color)
 void left_construction_Tower::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
+	//делаем перо активным 
+	SelectObject(hdc, PenWhite);
+	print_build();		//Основа башни
+	print_roof_build();	//Крыша башни
+	print_sub_build();	//Левая пристройка башни
+
+	DeleteObject(PenWhite);
+};
+
+void addition::print_roof_build()
+{
+	//Крыша башни
+	LineTo(hdc, X - 50, Y);
+	LineTo(hdc, X - 50, Y - 80);
+	LineTo(hdc, X + 120, Y - 80);
+	LineTo(hdc, X + 120, Y);
+	LineTo(hdc, X, Y);
+	LineTo(hdc, X, Y - 80);
+	LineTo(hdc, X + 60, Y - 80);
+	LineTo(hdc, X + 60, Y);
+}
+
+void addition::set_visible(HPEN color)
+{
+	//делаем перо активным 
+	SelectObject(hdc, color);
+	print_build();		//Основа башни
+	print_roof_build();	//Крыша башни
+	print_sub_build();	//Левая пристройка башни
+
+	current_region(X, Y);
+}
+
+void addition::set_invisible()
+{
+	//Белый цвет (сейчас)
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();		//Основа башни
@@ -465,7 +502,7 @@ void right_construction_Tower::set_visible(HPEN color)
 void right_construction_Tower::set_invisible()
 {
 	//Белый цвет (сейчас)
-	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	HPEN PenWhite = CreatePen(PS_SOLID, 3, RGB(242, 242, 242));
 	//делаем перо активным 
 	SelectObject(hdc, PenWhite);
 	print_build();		//Основа башни

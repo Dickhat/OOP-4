@@ -201,6 +201,21 @@ public:
 	void set_invisible();
 };
 
+//Доп задание
+class addition : public left_construction_Tower
+{
+public:
+	addition(int X, int Y, HPEN color) : left_construction_Tower(X, Y, color) {};
+
+	void print_roof_build();
+
+	//Делает видимой башню
+	void set_visible(HPEN color);
+
+	//Делает невидимой башню
+	void set_invisible();
+};
+
 //Веерная иерархия 2
 class right_construction_Tower : public Tower
 {
