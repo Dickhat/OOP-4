@@ -27,9 +27,9 @@ static void PressKey(int VkCode)
 }
 
 //Проверка столкновений
-static void check(int& i, Point*& current, std::vector <ball*>& BALL, Tower* collisions[5][5])
+static void check(int& i, Point*& current, std::vector <ball*>& BALL, Tower* collisions[6][6])
 {
-
+	//for Проверка столкновения по координатам
 	for (int j = 0; j < BALL.size(); ++j)
 	{
 		//if Проверка, что объекты столкнулись
@@ -55,45 +55,43 @@ static void check(int& i, Point*& current, std::vector <ball*>& BALL, Tower* col
 	}
 };
 
-
 //Буксировка фигуры current
-static void Drag(int& i, Point*& current, std::vector <Tower*>& Tow, std::vector <ball*>& BALL, Tower* collisions[5][5])
+static void Drag(int& i, Point*& current, std::vector <Tower*>& Tow, std::vector <ball*>& BALL, Tower* collisions[6][6])
 {
-	current = Tow[i];
+	current = Tow[i];				//Указатель на Базовый класс Tower
 
 	//while 7 - выход
 	while (!KEY_DOWN(55))
 	{
-		//current->set_invisible();
-
 		// A - влево
 		if (KEY_DOWN(65))
 		{
 			current->Move_To(current->Get_X() - 20, current->Get_Y());
 
-			check(i, current, BALL, collisions);
+			check(i, current, BALL, collisions);	//Проверка столкновения
 		}
 		// W - вверх
 		else if (KEY_DOWN(87))
 		{
 			current->Move_To(current->Get_X(), current->Get_Y() - 20);
 
-			check(i, current, BALL, collisions);
+			check(i, current, BALL, collisions);	//Проверка столкновения
 		}
 		// D - вправо
 		else if (KEY_DOWN(68))
 		{
 			current->Move_To(current->Get_X() + 20, current->Get_Y());
-			check(i, current, BALL, collisions);
+			check(i, current, BALL, collisions);	//Проверка столкновения
 
 		}
 		// S - Вниз
 		else if (KEY_DOWN(83))
 		{
 			current->Move_To(current->Get_X(), current->Get_Y() + 20);
-			check(i, current, BALL, collisions);
+			check(i, current, BALL, collisions);	//Проверка столкновения
 		}
 
+		//for Отрисовка всех шаров
 		for (int i = 0; i < BALL.size(); i++)
 		{
 			BALL[i]->set_visible(BALL[i]->pen_color());

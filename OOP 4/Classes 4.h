@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//Интерфейс с двумя чистыми виртуальными функциями
+//Интерфейс с чистыми виртуальными функциями
 class Interface
 {
 public:
@@ -14,7 +14,7 @@ public:
 	virtual void print_sub_build() = 0;			//Отображение пристройки объекта
 };
 
-//Абстрактный класс "точка" с одной чистой ВФ
+//Абстрактный класс "точка" с чистой ВФ
 class Point :public Interface
 {
 protected:
@@ -134,6 +134,27 @@ public:
 	void print_roof_build();
 
 	//Отображение пристройки
+	void print_sub_build();
+};
+
+//Класс Самолет для ПРАКТИКИ
+class Plane :public Tower
+{
+public:
+	Plane(int X, int Y, HPEN color) :Tower(X, Y, color) {};
+
+	void current_region(int X, int Y);
+
+	//Делает видимым объект
+	void set_visible(HPEN color);
+
+	//Делает невидимым объект
+	void set_invisible();
+
+	void print_build();
+
+	void print_roof_build();
+
 	void print_sub_build();
 };
 

@@ -15,51 +15,65 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ball" Collapsed="true">
-    <Position X="14.75" Y="5" Width="1.5" />
+    <Position X="15.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAACAAAAAAAAAAAAAABAAAAAAICiAAIAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Tower" Collapsed="true">
-    <Position X="9.75" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAAAAAAAAAAABAAAAAAICCQAAAAAAAAA=</HashCode>
-      <FileName>Classes 4.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="vertical_Tower_1" Collapsed="true">
-    <Position X="9.75" Y="6.75" Width="1.5" />
+    <Position X="7.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAABAAAABAICCQAAAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="vertical_Tower_2" Collapsed="true">
-    <Position X="9.75" Y="8.25" Width="1.5" />
+    <Position X="7.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAgAAAAAAABAAAAAAACCAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="left_construction_Tower" Collapsed="true">
-    <Position X="7.5" Y="6.75" Width="1.5" />
+    <Position X="5.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="right_construction_Tower" Collapsed="true">
-    <Position X="12" Y="6.75" Width="1.5" />
+    <Position X="9.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAABAAAABAACCAAAAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="upgraded_ball" Collapsed="true">
-    <Position X="14.75" Y="6.75" Width="1.5" />
+    <Position X="15.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAABAACCQAAAAAAAEA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tower" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAABAAAABAICCQAAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plane" Collapsed="true">
+    <Position X="11.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAABAICCQIAAAAAAAA=</HashCode>
+      <FileName>Classes 4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="addition" Collapsed="true">
+    <Position X="5.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAADAAAAAAAACQAAAAAAAAA=</HashCode>
       <FileName>Classes 4.h</FileName>
     </TypeIdentifier>
   </Class>
