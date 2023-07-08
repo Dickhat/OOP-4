@@ -7,11 +7,11 @@ using namespace std;
 class Interface
 {
 public:
-	virtual void set_visible(HPEN color) = 0;	//Отображение объекта
-	virtual void set_invisible() = 0;			//Исчезновение объекта
-	virtual void print_build() = 0;				//Отображение основной части объекта
-	virtual void print_roof_build() = 0;		//Отображение "крыши" объекта
-	virtual void print_sub_build() = 0;			//Отображение пристройки объекта
+	virtual void set_visible(HPEN color, HBRUSH color_br) = 0;		//Отображение объекта
+	virtual void set_invisible() = 0;								//Исчезновение объекта
+	virtual void print_build(HPEN color, HBRUSH color_br) = 0;		//Отображение основной части объекта
+	virtual void print_roof_build(HPEN color, HBRUSH color_br) = 0;	//Отображение "крыши" объекта
+	virtual void print_sub_build(HPEN color, HBRUSH color_br) = 0;	//Отображение пристройки объекта
 };
 
 //Абстрактный класс "точка" с чистой ВФ
@@ -21,7 +21,8 @@ protected:
 	int X;	//Координата X
 	int Y;	//Координата Y
 
-	HPEN pen;//Ручка
+	HPEN pen;		//Ручка
+	HBRUSH brush;	//Кисть
 
 	//Хитбоксы
 	struct heat_box
@@ -31,11 +32,12 @@ protected:
 
 public:
 	//КОНСТРУКТОР
-	Point(int ind_X, int ind_Y, HPEN color) :Interface()
+	Point(int ind_X, int ind_Y, HPEN color, HBRUSH color_br) :Interface()
 	{
 		X = ind_X;
 		Y = ind_Y;
 		pen = color;
+		brush = color_br;
 		boxheat.start_X = X;
 		boxheat.end_X = X + 1;
 		boxheat.start_Y = Y;
@@ -60,8 +62,11 @@ public:
 	//Возвращает цвет ручки
 	HPEN pen_color() { return pen; }
 
+	//Возвращает цвет кисти
+	HBRUSH Brush_color() { return brush; }
+
 	//Делает видимой точку
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой точку
 	void set_invisible();
@@ -80,19 +85,19 @@ protected:
 	int radius;								//Радиус ядра
 public:
 	//Конструктор
-	ball(int X, int Y, HPEN color, int Rad) :Point(X, Y, color) { radius = Rad; };
+	ball(int X, int Y, HPEN color, HBRUSH color_br, int Rad) :Point(X, Y, color, color_br) { radius = Rad; };
 
-	void print_build();						//Рисование ядра
+	void print_build(HPEN color, HBRUSH color_br);	//Рисование ядра
 
-	void set_rad(int Rad) { radius = Rad; };//Установить радиус ядра
-	int get_rad() { return radius; };		//Получить радиус ядра
+	void set_rad(int Rad) { radius = Rad; };		//Установить радиус ядра
+	int get_rad() { return radius; };				//Получить радиус ядра
 
 	//Запоминает местоположение фигуры
 	void current_region(int X, int Y);
 
-	void set_visible(HPEN color);			//Отображаение объекта
+	void set_visible(HPEN color, HBRUSH color_br);	//Отображаение объекта
 
-	void set_invisible();					//Исчезновение объекта
+	void set_invisible();							//Исчезновение объекта
 };
 
 //Улучшенное ядро
@@ -100,15 +105,15 @@ class upgraded_ball : public ball
 {
 public:
 	//Конструктор
-	upgraded_ball(int X, int Y, HPEN color, int Rad) : ball(X, Y, color, Rad) {};
+	upgraded_ball(int X, int Y, HPEN color, HBRUSH color_br, int Rad) : ball(X, Y, color, color_br, Rad) {};
 
-	void print_sub_build();				//Отображение подобъекта
+	void print_sub_build(HPEN color, HBRUSH color_br);	//Отображение подобъекта
 
-	void print_roof_build();			//Отображение верхушки объекта
+	void print_roof_build(HPEN color, HBRUSH color_br);	//Отображение верхушки объекта
 
 	void current_region(int X, int Y);	//Отобразить хитбоксы
 
-	void set_visible(HPEN color);		//Отображаение объекта
+	void set_visible(HPEN color, HBRUSH color_br);		//Отображаение объекта
 
 	void set_invisible();				//Исчезновение объекта
 };
@@ -117,45 +122,45 @@ public:
 class Tower :public Point
 {
 public:
-	Tower(int X, int Y, HPEN color) :Point(X, Y, color) {};
+	Tower(int X, int Y, HPEN color, HBRUSH color_br) :Point(X, Y, color, color_br) {};
 
 	void current_region(int X, int Y);
 
 	//Делает видимым объект
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимым объект
 	void set_invisible();
 
 	//Отображение основы башни
-	void print_build();
+	void print_build(HPEN color, HBRUSH color_br);
 
 	//Отображение "крыши" объекта
-	void print_roof_build();
+	void print_roof_build(HPEN color, HBRUSH color_br);
 
 	//Отображение пристройки
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 };
 
 //Класс Самолет для ПРАКТИКИ
 class Plane :public Tower
 {
 public:
-	Plane(int X, int Y, HPEN color) :Tower(X, Y, color) {};
+	Plane(int X, int Y, HPEN color, HBRUSH color_br) :Tower(X, Y, color, color_br) {};
 
 	void current_region(int X, int Y);
 
 	//Делает видимым объект
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимым объект
 	void set_invisible();
 
-	void print_build();
+	void print_build(HPEN color, HBRUSH color_br);
 
-	void print_roof_build();
+	void print_roof_build(HPEN color, HBRUSH color_br);
 
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 };
 
 //Вертикальная иерархия 1
@@ -163,22 +168,22 @@ class vertical_Tower_1 :public Tower
 {
 public:
 	//Конструктор
-	vertical_Tower_1(int X, int Y, HPEN color) :Tower(X, Y, color) {};
+	vertical_Tower_1(int X, int Y, HPEN color, HBRUSH color_br) :Tower(X, Y, color, color_br) {};
 
 	//Основание башни с лестницей
-	void print_build();
+	void print_build(HPEN colo, HBRUSH color_br);
 
 	//Пристройка
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 
 	//Башня
-	void print_roof_build();
+	void print_roof_build(HPEN color, HBRUSH color_br);
 
 	//Текущее местоположение
 	void current_region(int X, int Y);
 
 	//Делает видимой башню
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой башню
 	void set_invisible();
@@ -189,15 +194,15 @@ class vertical_Tower_2 :public vertical_Tower_1
 {
 public:
 	//Конструктор
-	vertical_Tower_2(int X, int Y, HPEN color) :vertical_Tower_1(X, Y, color) {};
+	vertical_Tower_2(int X, int Y, HPEN color, HBRUSH color_br) :vertical_Tower_1(X, Y, color, color_br) {};
 
 	//Пристройка
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 
 	void current_region(int X, int Y);
 
 	//Делает видимой башню
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой башню
 	void set_invisible();
@@ -208,15 +213,15 @@ class left_construction_Tower : public Tower
 {
 public:
 	//Конструктор
-	left_construction_Tower(int X, int Y, HPEN color) :Tower(X, Y, color) {};
+	left_construction_Tower(int X, int Y, HPEN color, HBRUSH color_br) :Tower(X, Y, color, color_br) {};
 
 	//Левая пристройка
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 
 	void current_region(int X, int Y);
 
 	//Делает видимой башню
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой башню
 	void set_invisible();
@@ -226,12 +231,12 @@ public:
 class addition : public left_construction_Tower
 {
 public:
-	addition(int X, int Y, HPEN color) : left_construction_Tower(X, Y, color) {};
+	addition(int X, int Y, HPEN color, HBRUSH color_br) : left_construction_Tower(X, Y, color, color_br) {};
 
-	void print_roof_build();
+	void print_roof_build(HPEN color, HBRUSH color_br);
 
 	//Делает видимой башню
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой башню
 	void set_invisible();
@@ -242,15 +247,15 @@ class right_construction_Tower : public Tower
 {
 public:
 	//Конструктор
-	right_construction_Tower(int X, int Y, HPEN color) :Tower(X, Y, color) {};
+	right_construction_Tower(int X, int Y, HPEN color, HBRUSH color_br) :Tower(X, Y, color, color_br) {};
 
 	//Правая конструкция
-	void print_sub_build();
+	void print_sub_build(HPEN color, HBRUSH color_br);
 
 	void current_region(int X, int Y);
 
 	//Делает видимой башню
-	void set_visible(HPEN color);
+	void set_visible(HPEN color, HBRUSH color_br);
 
 	//Делает невидимой башню
 	void set_invisible();

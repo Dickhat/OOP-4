@@ -50,7 +50,7 @@ static void check(int& i, Point*& current, std::vector <ball*>& BALL, Tower* col
 			current = collisions[i][j];				//Взять объект из матрицы 
 			i = j;
 
-			current->set_visible(current->pen_color());
+			current->set_visible(current->pen_color(), current->Brush_color());
 		}
 	}
 };
@@ -94,7 +94,7 @@ static void Drag(int& i, Point*& current, std::vector <Tower*>& Tow, std::vector
 		//for Отрисовка всех шаров
 		for (int i = 0; i < BALL.size(); i++)
 		{
-			BALL[i]->set_visible(BALL[i]->pen_color());
+			BALL[i]->set_visible(BALL[i]->pen_color(), BALL[i]->Brush_color());
 		}
 
 		Sleep(1);
